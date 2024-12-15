@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import { DataSource } from 'typeorm';
+import { AuthorEntity } from './entities/author.entity';
 
 dotenv.config();
 
@@ -11,4 +12,7 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_NAME,
   logging: true,
   synchronize: false,
+  entities: [AuthorEntity],
+  subscribers: [],
+  migrations: ['src/database/migrations/*.ts'],
 });
